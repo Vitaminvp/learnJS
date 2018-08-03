@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import ArticleList from './js/components/articleList';
+import { articles } from './fixtures';
+import './js/components/article.css';
 
-function HelloWorld() {
-    return <h1>Hello World</h1>
-}
-
-render(<HelloWorld/>, document.querySelector('#container'));
+render(<ArticleList articles={articles}/>, document.getElementById('container'));

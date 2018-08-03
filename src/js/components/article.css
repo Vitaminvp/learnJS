@@ -1,0 +1,39 @@
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  min-height: 100%;
+  height: 100%;
+}
+body{
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+  background-size: 100% 100%;
+  box-sizing: border-box;
+}
+::placeholder{
+  color: #ff0000;
+}
+
+::selection{
+  color: #29a1ff;
+}
+ul{
+  list-style-type: none;
+  transition: all 0.25s ease;
+  padding-left: 0;
+  margin: 50px;
+}
+li{
+    border: 1px solid lightgrey;
+    padding: 10px;
+}
+li:nth-child(2n){
+      background-color: lightgrey;
+}
+button{
+  margin-bottom: 10px;
+  border-radius: 3px;
+  box-shadow: none;
+  border: 1px solid dimgrey;
+}
