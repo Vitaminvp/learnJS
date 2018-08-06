@@ -7,12 +7,12 @@ export default (OriginalComponent) => class WrappedComponent extends React.Compo
             isOpen: false
         };
     }
-    handleClick(){
+    handleClick =() => {
         this.setState({
             isOpen: !this.state.isOpen
         });
     }
     render(){
-        return <OriginalComponent {...this.props} isOpen={this.state.isOpen} handleClick={this.handleClick.bind(this)}/>
+        return <OriginalComponent {...this.props} isOpen={this.state.isOpen} handleClick={this.handleClick }/>
     }
 }
