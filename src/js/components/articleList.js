@@ -21,7 +21,7 @@ class ArticleList extends React.Component {
     };
 
     setRef = ref => {
-        console.log(ref);
+        // console.log(ref);
     };
     render(){
         const articles = this.props.articles.map((article) => <li key={article.id}><Article article={article} isOpen = {article.id == this.props.id} toggleOpen = {this.props.handleClick} ref = { this.setRef } /></li>);

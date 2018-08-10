@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import WrappedComponent from './../decorators/toggleOpen';
-import  DPicker from './daypicker';
-import 'react-day-picker/lib/style.css';
+import './comments.css';
+// import  DPicker from './daypicker';
+// import 'react-day-picker/lib/style.css ';
 class Comments extends React.Component {
     constructor() {
         super();
@@ -21,9 +22,9 @@ class Comments extends React.Component {
             return null;
         }
         comList = comments.map((item) => <li key={item.id}>{item.text}<strong>by {item.user}</strong></li>);
-        const comText = this.props.isOpen? <div><DPicker/>comList</div> : null;
+        const comText = this.props.isOpen? comList : null;
 
-        return <div>
+        return <div className="comments">
             <button onClick={this.props.handleClick.bind(this)}>{!this.props.isOpen?'show':' hide '}</button>
 
             <ol>
