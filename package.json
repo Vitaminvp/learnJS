@@ -28,7 +28,6 @@
     "babel-preset-stage-0": "^6.5.0",
     "concurrently": "^2.2.0",
     "css-loader": "^0.23.1",
-    "react-transition-group": "^2.4.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
@@ -45,7 +44,8 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.6.1",
     "react-select": "^1.3.0",
-    "redux": "^3.5.2",
+    "react-transition-group": "^1.2.1",
+    "redux": "^3.7.2",
     "redux-thunk": "^2.1.0"
   }
 }

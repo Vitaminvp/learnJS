@@ -1,10 +1,15 @@
 import React from 'react';
 
 export default (OriginalComponent) => class accordion extends React.Component{
-    constructor(){
-        super();
+
+    static defaultProps={
+        defaultId: []
+    };
+    constructor(props){
+        super(props);
+
         this.state={
-            articleOpenId: null
+            articleOpenId: this.props.defaultId
         }
     }
     toggleOpen = id =>{
@@ -19,6 +24,6 @@ export default (OriginalComponent) => class accordion extends React.Component{
         }
     };
     render(){
-        return <OriginalComponent {...this.props} id={this.state.articleOpenId} handleClick={this.toggleOpen }/>
+        return <OriginalComponent {...this.props} id={this.state.articleOpenId} defaultId = {this.props.defaultId}  handleClick={this.toggleOpen }/>
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-// import { ReactCSSTransitionGroup } from 'react-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 import Comments from './comments';
 import PropTypes from 'prop-types';
 
@@ -27,26 +27,37 @@ export default class Article extends React.PureComponent {
     //     return nextProps.isOpen !== this.props.isOpen;
     // }
     render(){
-        console.log(this.props.article.id, "render article");
+        // console.log(this.props.article.id, "render article");
         const text = this.props.isOpen?this.props.article.text:null;
         const comments = this.props.article.comments;
         let comment = this.props.isOpen?<Comments com={comments}/>:null;
         return <div>
-                    <h3 onClick={this.toggleOpen}>{this.props.article.title}</h3>
+            <CSSTransitionGroup
+                transitionName="article"
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={300}
+            >
+
+                <h3 onClick={this.toggleOpen}>{this.props.article.title}</h3>
+            </CSSTransitionGroup>
+
                     <button onClick={this.toggleOpen}>{!this.props.isOpen?'open':'close'}</button>
+            <CSSTransitionGroup
+                transitionName="article"
+                transitionAppear={true}
+                transitionAppearTimeout={500}
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={300}
+                component = "div"
+            >
+            <div>{ text }</div>
+            </CSSTransitionGroup>
 
-            {/*<ReactCSSTransitionGroup*/}
-                {/*transitionName="example"*/}
-                {/*transitionAppear={true}*/}
-                {/*transitionAppearTimeout={500}*/}
-                {/*transitionEnter={false}*/}
-                {/*transitionLeave={false}>*/}
-            {/*</ReactCSSTransitionGroup>*/}
-            <div>{text}</div>
 
-                    <br />
-                    { comment }
-
+                 <br />
+                { comment }
                 </div>
     }
 }

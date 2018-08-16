@@ -1,0 +1,9 @@
+.comments {
+    text-align: right;
+}
+.comments ol{
+   text-align: left;
+}
+.comments li{
+   text-align: left;
+}
