@@ -1,5 +1,4 @@
 var path = require('path')
-var webpack = require('webpack')
 
 module.exports = {
     devtool: 'source-map',
@@ -12,22 +11,22 @@ module.exports = {
         publicPath: '/static/'
     },
     devServer: {
-        historyApiFallback: true,
         proxy: [{
-            path: '/api/*',
+            path: '/api/',
             target: 'http://localhost:3001'
-        }]
+        }],
+        historyApiFallback: true
     },
     module: {
         loaders: [
             {
-                test: /\.jsx?/,
-                loaders: ['babel'],
+                test: /\.js/,
+                loaders: ['babel-loader'],
                 include: path.join(__dirname, 'src')
             },
             {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                test: /\.css/,
+                loaders: ['style-loader', 'css-loader'],
             }
         ]
     }

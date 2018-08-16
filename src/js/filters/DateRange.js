@@ -1,31 +1,33 @@
 import React from 'react';
-import DayPicker from 'react-day-picker';
+import DayPicker, {DateUtils} from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
-export default class DayRange extends React.Component {
+export default class DateRange extends React.Component {
     constructor(props) {
         super(props);
         this.handleDayClick = this.handleDayClick.bind(this);
         this.state = {
-            selectedDay: null,
+            from: null,
+            to: null
         };
     }
-    handleDayClick(day, { selected }) {
-        this.setState({
-            selectedDay: selected ? undefined : day,
-        });
+    handleDayClick = day => {
+        this.setState(DateUtils.addDayToRange(day, this.state));
     }
     render() {
+        const {from, to} = this.state;
+        const selectedRange = from && to && `${from.toDateString()} - ${to.toDateString()}`;
         return (
-            <div>
+            <div className = "date-range">
                 <DayPicker
-                    selectedDays={this.state.selectedDay}
+                    ref = "daypicker"
+                    selectedDays={day => DateUtils.isDayInRange(day, {from, to})}
                     onDayClick={this.handleDayClick}
                 />
                 <p>
-                    {this.state.selectedDay ? this.state.selectedDay.toLocaleDateString() : 'Please select a day 👻'}
+                    {selectedRange}
                 </p>
             </div>
         );
     }
-}
+};
