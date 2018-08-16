@@ -10,6 +10,7 @@ import Counter from "./js/components/counter";
 export default class App extends React.Component{
     render(){
         return <div>
+            asdfasdfasdfasdf
             <Counter/>
             <UserForm/>
             <Filters articles = {articles} />
