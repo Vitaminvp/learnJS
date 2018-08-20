@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import  { connect } from 'react-redux';
+import { increment } from "../../AC/index"
 
-export default class Counter extends React.Component {
+class Counter extends React.Component {
     static propTypes = {
         counter: PropTypes.number
     };
 
     handleIncrement = () => {
-        console.log("---", "incrementing");
-    }
+        this.props.increment()
+    };
     render(){
         return (
             <div>
@@ -18,3 +20,12 @@ export default class Counter extends React.Component {
         );
     }
 }
+// function mapStateToProps(state){
+//     return {
+//         counter: state.count
+//     }
+// }
+// const mapToDispatch = { increment };
+// const decorator = connect(mapStateToProps, mapToDispatch);
+
+export default connect((state)=>({counter: state.count}), { increment })(Counter);

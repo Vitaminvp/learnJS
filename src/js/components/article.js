@@ -2,10 +2,10 @@ import React from 'react';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Comments from './comments';
 import PropTypes from 'prop-types';
-
+import { connect } from 'react-redux';
 import './transition.css';
-
-export default class Article extends React.PureComponent {
+import {deleteArticle} from './../../AC';
+class Article extends React.PureComponent {
     static defaultProps={
         comments: []
     };
@@ -21,11 +21,17 @@ export default class Article extends React.PureComponent {
         })
     };
     toggleOpen=() => {
+
         this.props.toggleOpen(this.props.article.id);
     };
     // shouldComponentUpdate(nextProps){
     //     return nextProps.isOpen !== this.props.isOpen;
     // }
+    handleDelete = () => {
+        const {deleteArticle, article} = this.props;
+        deleteArticle(article.id);
+        console.log("delete");
+    };
     render(){
         // console.log(this.props.article.id, "render article");
         const text = this.props.isOpen?this.props.article.text:null;
@@ -44,6 +50,7 @@ export default class Article extends React.PureComponent {
             </CSSTransitionGroup>
 
                     <button onClick={this.toggleOpen}>{!this.props.isOpen?'open':'close'}</button>
+                    <button onClick={this.handleDelete}>Delete</button>
             <CSSTransitionGroup
                 transitionName="article"
                 transitionAppear={true}
@@ -61,4 +68,4 @@ export default class Article extends React.PureComponent {
                 </div>
     }
 }
-
+export default connect(null, {deleteArticle})(Article);

@@ -2,6 +2,7 @@ import React from 'react';
 import Article from './article';
 import PropTypes from 'prop-types';
 import accordion from './../decorators/accordion';
+import { connect } from 'react-redux';
 
 import 'react-day-picker/lib/style.css';
 
@@ -14,15 +15,9 @@ class ArticleList extends React.Component {
         };
     }
     static propTypes = {
-        article: PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            text: PropTypes.string,
-            title: PropTypes.string,
-            date: PropTypes.string,
-        }),
+        //from connect
+        articles: PropTypes.array.isRequired,
         handleClick: PropTypes.func.isRequired,
-        id: PropTypes.string
-
     };
     handleDayClick(day, { selected }) {
         const { selectedDays } = this.state;
@@ -49,4 +44,6 @@ class ArticleList extends React.Component {
 
     }
 }
-export default accordion(ArticleList);
+export default connect(state => ({
+    articles: state.articles
+}))(accordion(ArticleList));
