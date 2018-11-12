@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DateRange from './DateRange';
 import SelectFilters from './Select';
+import { connect } from 'react-redux';
 
 export class Filters extends React.Component {
     static propTypes = {
@@ -16,4 +17,5 @@ export class Filters extends React.Component {
             </div>
         );
     }
-}
+};
+ 
